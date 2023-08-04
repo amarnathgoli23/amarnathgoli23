@@ -6,12 +6,12 @@ import bcrypt from "bcrypt";
 async function seed() {
  await mongoose.connect(DB_URL);
 
- bcrypt.hash("sreevardhan123", 12).then((hashedPassword) => {
+ bcrypt.hash("testtest", 12).then((hashedPassword) => {
   const user = new User({
-   name: "Sreevardhan",
-   username: "sreevardhan",
+   name: "testtest",
+   username: "testtest",
    password: hashedPassword,
-   email: "sreevardhan@virinnovation.in",
+   email: "testtest@gmail.com",
   });
   return user.save();
  });
