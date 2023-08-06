@@ -8,9 +8,9 @@ const { recieveDataInSocket } = require("./socket");
 //     baudRate: 115200
 // });
 module.exports = function () {
-    setInterval(() => {
-        recieveDataInSocket("car", "10.99835602,77.01502627");
-    }, 10000)
+    // setInterval(() => {
+    //     recieveDataInSocket("car", "10.99835602,77.01502627");
+    // }, 10000)
     // serialPort.on("open", function () {
     //     console.log("-- Connection opened --");
     //     serialPort.on("data", function (data) {

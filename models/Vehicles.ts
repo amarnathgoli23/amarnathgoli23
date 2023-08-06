@@ -11,7 +11,7 @@ const vehicleSchema = new mongoose.Schema<VehicleInterface>({
   required: true,
   type: String,
  },
- year: {
+ unit: {
   required: true,
   type: String,
  },
@@ -21,7 +21,7 @@ export const validateVehicle = (vehicle: VehicleInterface) => {
  const schema = Joi.object({
   type: Joi.string().required(),
   reg: Joi.string().required(),
-  year: Joi.number().required(),
+  unit: Joi.string().required(),
  });
 
  return schema.validate(vehicle);

@@ -12,6 +12,6 @@ const port = process.env.PORT || 3001;
 const server = app.listen(port, () =>
  console.log(`Listening on port ${port}...`)
 );
-require("./helpers/serial")();
+// require("./helpers/serial")();
 
 module.exports = server;
