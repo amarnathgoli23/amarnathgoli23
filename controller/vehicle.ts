@@ -12,7 +12,20 @@ export const addVehicle = async (req: Request, res: Response) => {
 };
 
 export const getAllVehicles = async (req: Request, res: Response) => {
- const vehicle = await Vehicle.find();
+ const vehicle = await Vehicle.find()
+  .populate("type")
+  .populate({
+   path: "team",
+   model: "Team",
+   populate: {
+    path: "group",
+    model: "Group",
+    populate: {
+     path: "command",
+     model: "Command",
+    },
+   },
+  });
  return res.status(200).send(vehicle);
 };
 

@@ -1,35 +1,24 @@
 import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
-import Team, { validateTeam } from "../models/Team";
+import VehicleType, { validateVehicleType } from "../models/VehicleType";
 
-export const addTeam = async (req: Request, res: Response) => {
- const { value, error } = validateTeam(req.body);
+export const addVehicleType = async (req: Request, res: Response) => {
+ const { value, error } = validateVehicleType(req.body);
  if (error) return res.status(500).send(error);
- const team = new Team(value);
+ const vehicleType = new VehicleType(value);
  try {
-  team.save();
-  res.status(200).send({ message: "Team added successfully!" });
+  vehicleType.save();
+  res.status(200).send({ message: "Vehicle Type added successfully!" });
  } catch (e) {
   console.log(e);
+  res.status(500).send({ message: "Error while adding vehicle type" });
  }
 };
 
-export const getAllTeam = async (req: Request, res: Response) => {
- const team = await Team.find();
- return res.status(200).send(team);
-};
+export const getAllVehicleType = async (req: Request, res: Response) => {
+ const vehicleType = await VehicleType.find();
 
-export const getTeamByTitle = async (req: Request, res: Response) => {
- const title = req.params.title.split(":")[1];
- const team = await Team.find({ title }).populate({
-  path: "group",
-  populate: {
-   path: "command",
-   model: "Command",
-  },
- });
- //  console.log(team);
- return res.status(200).send(team);
+ return res.status(200).send(vehicleType);
 };
 
 // export const editVehicle = async (req: Request, res: Response) => {

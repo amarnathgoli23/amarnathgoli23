@@ -1,11 +1,12 @@
 import Joi from "joi";
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import VehicleInterface from "../interfaces/Vehicles";
 
 const vehicleSchema = new mongoose.Schema<VehicleInterface>({
  type: {
   required: true,
-  type: String,
+  type: Types.ObjectId,
+  ref: "VehicleType",
  },
  reg: {
   required: true,
@@ -15,11 +16,17 @@ const vehicleSchema = new mongoose.Schema<VehicleInterface>({
   required: true,
   type: String,
  },
+ team: {
+  required: true,
+  type: Types.ObjectId,
+  ref: "Team",
+ },
 });
 
 export const validateVehicle = (vehicle: VehicleInterface) => {
  const schema = Joi.object({
-  type: Joi.string().required(),
+  type: Joi.string().hex().length(24).required(),
+  team: Joi.string().hex().length(24).required(),
   reg: Joi.string().required(),
   unit: Joi.string().required(),
  });
