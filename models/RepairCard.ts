@@ -7,27 +7,31 @@ const repairCardSchema = new mongoose.Schema<RepairCardInterface>({
   type: String,
   required: true,
  },
- "Ba /Reg": {
+ "BA /Reg": {
   type: String,
   required: true,
  },
- "Make&type EQPT": {
+ "UNIT/COMBAT GROUP": {
   type: String,
   required: true,
  },
- "Nature of defect": {
+ "MAKE&TYPE EQPT": {
   type: String,
   required: true,
  },
- "Repair activity": {
+ "NATURE OF DEFECT": {
   type: String,
   required: true,
  },
- "Time taken to repair(min)": {
+ "REPAIR ACTIVITY": {
   type: String,
   required: true,
  },
- Sys: {
+ "TIME TAKEN TO REPAIR(MIN)": {
+  type: String,
+  required: true,
+ },
+ SYS: {
   type: String,
   required: true,
  },
@@ -39,7 +43,7 @@ const repairCardSchema = new mongoose.Schema<RepairCardInterface>({
   type: Number,
   required: true,
  },
- "DD-MM-YY": {
+ "DATE OUT": {
   type: String,
   required: true,
  },
@@ -48,15 +52,16 @@ const repairCardSchema = new mongoose.Schema<RepairCardInterface>({
 export const validateRepairCard = (repair: RepairCardInterface) => {
  const schema = Joi.object({
   "DATE IN": Joi.string().required(),
-  "Ba /Reg": Joi.string().required(),
-  "Make&type EQPT": Joi.string().required(),
-  "Nature of defect": Joi.string().required(),
-  "Repair activity": Joi.string().required(),
-  "Time taken to repair(min)": Joi.string().required(),
-  Sys: Joi.string().required(),
+  "BA /Reg": Joi.string().required(),
+  "UNIT/COMBAT GROUP": Joi.string().required(),
+  "MAKE&TYPE EQPT": Joi.string().required(),
+  "NATURE OF DEFECT": Joi.string().required(),
+  "REPAIR ACTIVITY": Joi.string().required(),
+  "TIME TAKEN TO REPAIR(MIN)": Joi.string().required(),
+  SYS: Joi.string().required(),
   SPARE: Joi.string().required(),
   QTY: Joi.number().required(),
-  "DD-MM-YY": Joi.string().required(),
+  "DATE OUT": Joi.string().required(),
  });
 
  return schema.validate(repair);

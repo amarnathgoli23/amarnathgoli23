@@ -15,7 +15,7 @@ const recordOfWorkSchema = new mongoose.Schema<RecordOfWorkInterface>({
   type: String,
   required: true,
  },
- "LOC OF CAS(FML/PMC/NMC)": {
+ "LOC OF CAS": {
   type: String,
   required: true,
  },
@@ -31,11 +31,11 @@ const recordOfWorkSchema = new mongoose.Schema<RecordOfWorkInterface>({
   type: String,
   required: true,
  },
- "CAS DISPOSAL": {
+ "CASUALITY DISPOSAL": {
   type: String,
   required: true,
  },
- "IF UNCOVERD REPORTED TO": {
+ "IF UNRECOVERED REPORTED TO": {
   type: String,
   required: true,
  },
@@ -50,12 +50,12 @@ export const validateRecordOfWork = (work: RecordOfWorkInterface) => {
   "TYPE OF EQPT": Joi.string().required(),
   "BA NO": Joi.string().required(),
   UNIT: Joi.string().required(),
-  "LOC OF CAS(FML/PMC/NMC)": Joi.string().required(),
+  "LOC OF CAS": Joi.string().required(),
   "TIME REPORTED": Joi.string().required(),
   "TIME COMPLETED": Joi.string().required(),
   CI: Joi.string().required(),
-  "CAS DISPOSAL": Joi.string().required(),
-  "IF UNCOVERD REPORTED TO": Joi.string().required(),
+  "CASUALITY DISPOSAL": Joi.string().required(),
+  "IF UNRECOVERED REPORTED TO": Joi.string().required(),
   REMARKS: Joi.string().required(),
  });
 
@@ -63,7 +63,7 @@ export const validateRecordOfWork = (work: RecordOfWorkInterface) => {
 };
 
 const RecordOfWork = mongoose.model<RecordOfWorkInterface>(
- "RepairCard",
+ "RepairOfWork",
  recordOfWorkSchema
 );
 export default RecordOfWork;

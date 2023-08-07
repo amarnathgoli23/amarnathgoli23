@@ -11,6 +11,10 @@ const stateSchema = new mongoose.Schema<StateInterface>({
   type: String,
   required: true,
  },
+ "UNIT/COMBAT GROUP": {
+  type: String,
+  required: true,
+ },
  "MAKE&TYPE EQPT": {
   type: String,
   required: true,
@@ -33,9 +37,10 @@ const stateSchema = new mongoose.Schema<StateInterface>({
  },
 });
 
-export const validateRepairCardInterface = (state: StateInterface) => {
+export const validateState = (state: StateInterface) => {
  const schema = Joi.object({
   "DATE IN": Joi.string().required(),
+  "UNIT/COMBAT GROUP": Joi.string().required(),
   "BA/REG": Joi.string().required(),
   "MAKE&TYPE EQPT": Joi.string().required(),
   "NATURE OF DEFECT": Joi.string().required(),

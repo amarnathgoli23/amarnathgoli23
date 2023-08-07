@@ -3,7 +3,11 @@ import mongoose from "mongoose";
 import { RecoveryStateInterface } from "../interfaces/Reports";
 
 const recoveryStateSchema = new mongoose.Schema<RecoveryStateInterface>({
- DATE: {
+ "DATE IN": {
+  type: String,
+  required: true,
+ },
+ "TYPE INFO RECD BY REC": {
   type: String,
   required: true,
  },
@@ -11,11 +15,7 @@ const recoveryStateSchema = new mongoose.Schema<RecoveryStateInterface>({
   type: String,
   required: true,
  },
- "TIME INFO RECD BY REC": {
-  type: Number,
-  required: true,
- },
- "INFO RECD By (TELE/RADIO/SIG/COURSE)": {
+ "INFO RECD BY(TELE/RADIO/SIG/COURSE)": {
   type: String,
   required: true,
  },
@@ -23,7 +23,7 @@ const recoveryStateSchema = new mongoose.Schema<RecoveryStateInterface>({
   type: String,
   required: true,
  },
- "TIME Reqd FOR REC (HRS)": {
+ "TIME REQD FOR REC (HRS)": {
   type: String,
   required: true,
  },
@@ -35,7 +35,7 @@ const recoveryStateSchema = new mongoose.Schema<RecoveryStateInterface>({
   type: String,
   required: true,
  },
- "Cas  REPAIRED AFTER REC(YES/NO)": {
+ "CAS REPAIRED AFTER REC (YES/NO)": {
   type: String,
   required: true,
  },
@@ -43,7 +43,7 @@ const recoveryStateSchema = new mongoose.Schema<RecoveryStateInterface>({
   type: String,
   required: true,
  },
- "SIT REP RAISED (YES/NO)(SIT REP NO IF RAISED)": {
+ "SIT REP RAISED (YES/NO) (SIT REP NO IF RAISED)": {
   type: String,
   required: true,
  },
@@ -51,18 +51,17 @@ const recoveryStateSchema = new mongoose.Schema<RecoveryStateInterface>({
 
 export const validateRecoveryState = (work: RecoveryStateInterface) => {
  const schema = Joi.object({
-  "TYPE OF EQPT": Joi.string().required(),
-  DATE: Joi.string().required(),
+  "DATE IN": Joi.string().required(),
   "UNIT REGNO MAKE&CAS TYPE": Joi.string().required(),
-  "TIME INFO RECD BY REC": Joi.number().required(),
-  "INFO RECD By (TELE/RADIO/SIG/COURSE)": Joi.string().required(),
+  "TYPE INFO RECD BY REC": Joi.string().required(),
+  "INFO RECD BY(TELE/RADIO/SIG/COURSE)": Joi.string().required(),
   "TIME BY ROC TO REACH SITE OF CAS": Joi.string().required(),
-  "TIME Reqd FOR REC (HRS)": Joi.string().required(),
+  "TIME REQD FOR REC (HRS)": Joi.string().required(),
   "NO AND TYPE OF REC USED": Joi.string().required(),
   "MANPOWER EQPT TRADE WISE": Joi.string().required(),
-  "Cas  REPAIRED AFTER REC(YES/NO)": Joi.string().required(),
+  "CAS REPAIRED AFTER REC (YES/NO)": Joi.string().required(),
   "DETAILS OF SPARES FITTED IN CAS": Joi.string().required(),
-  "SIT REP RAISED (YES/NO)(SIT REP NO IF RAISED)": Joi.string().required(),
+  "SIT REP RAISED (YES/NO) (SIT REP NO IF RAISED)": Joi.string().required(),
  });
 
  return schema.validate(work);

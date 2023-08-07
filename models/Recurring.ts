@@ -15,6 +15,10 @@ const recurringSchema = new mongoose.Schema<RecurringInterface>({
   type: String,
   required: true,
  },
+ "UNIT/COMBAT GROUP": {
+  type: String,
+  required: true,
+ },
  "NO OF INCIDENCES": {
   type: String,
   required: true,
@@ -36,6 +40,7 @@ const recurringSchema = new mongoose.Schema<RecurringInterface>({
 export const validateRecurring = (recurring: RecurringInterface) => {
  const schema = Joi.object({
   "MAKE& TYPE OF EQPT": Joi.string().required(),
+  "UNIT/COMBAT GROUP": Joi.string().required(),
   "FAULT OBSERVED": Joi.string().required(),
   SYSTEM: Joi.string().required(),
   "NO OF INCIDENCES": Joi.string().required(),

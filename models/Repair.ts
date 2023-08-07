@@ -3,11 +3,15 @@ import mongoose from "mongoose";
 import { RepairInterface } from "../interfaces/Reports";
 
 const repairSchema = new mongoose.Schema<RepairInterface>({
- "DET NO": {
+ "DATE IN": {
   type: String,
   required: true,
  },
  "CG/CT": {
+  type: String,
+  required: true,
+ },
+ "UNIT/COMBAT GROUP": {
   type: String,
   required: true,
  },
@@ -24,11 +28,11 @@ const repairSchema = new mongoose.Schema<RepairInterface>({
   required: true,
  },
  "KM RUN": {
-  type: Number,
+  type: String,
   required: true,
  },
  "ENG HRS": {
-  type: Number,
+  type: String,
   required: true,
  },
  REMARKS: {
@@ -39,13 +43,14 @@ const repairSchema = new mongoose.Schema<RepairInterface>({
 
 export const validateRepair = (repair: RepairInterface) => {
  const schema = Joi.object({
-  "DET NO": Joi.string().required(),
+  "DATE IN": Joi.string().required(),
   "CG/CT": Joi.string().required(),
+  "UNIT/COMBAT GROUP": Joi.string().required(),
   "CREW DETAILS": Joi.string().required(),
   "SPARES HELD": Joi.string().required(),
   "SMTS HELD": Joi.string().required(),
-  "KM RUN": Joi.number().required(),
-  "ENG HRS": Joi.number().required(),
+  "KM RUN": Joi.string().required(),
+  "ENG HRS": Joi.string().required(),
   REMARKS: Joi.string().required(),
  });
 

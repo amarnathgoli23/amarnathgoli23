@@ -6,6 +6,7 @@ import commandRouter from "./../routes/command";
 import groupRouter from "./../routes/group";
 import teamRouter from "./../routes/team";
 import vehicleTypeRouter from "./../routes/vehicleType";
+import reportRouter from "./../routes/reports";
 export default function (app: Application) {
  app.use(express.json());
  app.use("/api/auth", authRouter);
@@ -15,4 +16,5 @@ export default function (app: Application) {
  app.use("/api/group", groupRouter);
  app.use("/api/team", teamRouter);
  app.use("/api/vehicleType", vehicleTypeRouter);
+ app.use("/api/reports", reportRouter);
 }
