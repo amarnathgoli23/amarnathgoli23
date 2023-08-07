@@ -3,30 +3,30 @@ import mongoose from "mongoose";
 import SparesInterface from "../interfaces/Spares";
 
 const sparesSchema = new mongoose.Schema<SparesInterface>({
- catPartNumber: {
+ "CAT/SECTION PART NO. (LV3/ICV)": {
   type: String,
   required: true,
  },
- nomenclature: {
+ NOMENCLATURE: {
   type: String,
   required: true,
  },
- quantityHeld: {
+ QTY: {
   type: Number,
   required: true,
  },
- quantityConsumed: {
-  type: Number,
+ "UNIT/FORMATION": {
+  type: String,
   required: true,
  },
 });
 
 export const validateSpares = (spares: SparesInterface) => {
  const schema = Joi.object({
-  catPartNumber: Joi.string().required(),
-  nomenclature: Joi.string().required(),
-  quantityHeld: Joi.number().required(),
-  quantityConsumed: Joi.number().required(),
+  "CAT/SECTION PART NO. (LV3/ICV)": Joi.string().required(),
+  NOMENCLATURE: Joi.string().required(),
+  QTY: Joi.number().required(),
+  "UNIT/FORMATION": Joi.string().required(),
  });
 
  return schema.validate(spares);
